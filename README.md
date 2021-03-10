@@ -9,7 +9,7 @@ Build
     $ rebar3 compile
 
 TASK
-_____
+-----
 
 Write file appender. It will get a file path and string to append and will append it to the file in a newline.
 if in 10 seconds nothing was appended to the file, the file will be closed.
