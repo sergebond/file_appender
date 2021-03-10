@@ -24,6 +24,10 @@ ok
 ok
 ```
 
+Tests run
+-----
+
+``rebar3 eunit``
 
 TASK
 -----
