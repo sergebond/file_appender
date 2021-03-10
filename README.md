@@ -3,10 +3,27 @@ file_appender
 
 An OTP application
 
-Build
+Build&Run
 -----
 
-    $ rebar3 compile
+    $ rebar3 shell
+
+Usage
+-----
+
+```
+1> Path = "/tmp/tmp_file".    
+"/tmp/tmp_file"
+2> 
+2> file_appender:append(Path, "Some string to append").
+ok
+3> file_appender:append(Path, "Another string to append").
+ok
+4> rp(file:read_file(Path)).
+{ok,<<"Some string to append\nAnother string to append\n">>}
+ok
+```
+
 
 TASK
 -----
