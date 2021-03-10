@@ -8,7 +8,7 @@ Build&Run
 
     $ rebar3 shell
 
-Usage
+Usage example
 -----
 
 ```
