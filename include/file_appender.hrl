@@ -1,0 +1,2 @@
+-author("sergeybondarchuk").
+-define(APP_NAME, file_appender).
