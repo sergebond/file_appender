@@ -24,7 +24,7 @@ ok
 ok
 ```
 
-Tests run
+Run tests
 -----
 
 ``rebar3 eunit``
