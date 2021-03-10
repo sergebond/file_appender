@@ -10,7 +10,6 @@
 -export([append/2]).
 
 -define(SERVER, ?MODULE).
--define(TIMEOUT, 10000). %% 10 sec
 
 -record(state, {
   io_device :: file:io_device(),
@@ -28,18 +27,18 @@ append(Path, String) ->
 %%%===================================================================
 
 start_link(Path) ->
-  gen_server:start_link({local, ?SERVER}, ?MODULE, [Path], []).
+  gen_server:start_link(?MODULE, [Path], []).
 
 init([Path]) ->
-  {ok, IoDevice} = file:open(Path, [read, write]),
+  {ok, IoDevice} = file:open(Path, [append]),
   State = #state{path = Path, io_device = IoDevice},
   error_logger:info_msg("File is opened ~p", [Path]),
-  {ok, close_file_after_timeout(State) }.
+  {ok, close_file_after_timeout(State)}.
 
 handle_call({append, String}, _From, State = #state{io_device = IoDevice, path = Path}) ->
   ok = io:fwrite(IoDevice, "~s~n", [String]),
   error_logger:info_msg("Write line ~p to file ~p", [String, Path]),
-  {reply, ok, close_file_after_timeout(State) };
+  {reply, ok, close_file_after_timeout(State)};
 
 handle_call(_Request, _From, State = #state{}) ->
   {reply, ok, State}.

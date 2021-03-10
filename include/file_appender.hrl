@@ -1,2 +1,3 @@
 -author("sergeybondarchuk").
 -define(APP_NAME, file_appender).
+-define(TIMEOUT, 10000). %% 10 sec
