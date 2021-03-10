@@ -1,7 +1,7 @@
 file_appender
 =====
 
-An OTP application
+An Erlang/OTP application. Allows to efficiently write data to multiple files in parallel.
 
 Build&Run
 -----
