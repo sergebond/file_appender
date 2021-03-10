@@ -3,13 +3,34 @@ file_appender
 
 An OTP application
 
-Build
+Build&Run
 -----
 
-    $ rebar3 compile
+    $ rebar3 shell
+
+Usage example
+-----
+
+```
+1> Path = "/tmp/tmp_file".    
+"/tmp/tmp_file"
+2> 
+2> file_appender:append(Path, "Some string to append").
+ok
+3> file_appender:append(Path, "Another string to append").
+ok
+4> rp(file:read_file(Path)).
+{ok,<<"Some string to append\nAnother string to append\n">>}
+ok
+```
+
+Run tests
+-----
+
+``rebar3 eunit``
 
 TASK
-_____
+-----
 
 Write file appender. It will get a file path and string to append and will append it to the file in a newline.
 if in 10 seconds nothing was appended to the file, the file will be closed.
